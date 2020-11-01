@@ -1,5 +1,4 @@
 const inquirer = require("inquirer");
-const chalkPipe = require("chalk-pipe");
 
 const promptUser = async () => {
   return inquirer.prompt([

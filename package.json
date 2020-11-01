@@ -20,10 +20,20 @@
     "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0"
   },
+  "bin": {
+    "crc": "bin/crc.js"
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "body-max-line-length": [
+        2,
+        "always",
+        150
+      ]
+    }
   },
   "husky": {
     "hooks": {
