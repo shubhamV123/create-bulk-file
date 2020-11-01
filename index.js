@@ -1,52 +1,44 @@
-#!/usr/bin/env node
-const meow = require("meow");
-const chalkPipe = require("chalk-pipe");
+//Third party package
 
-const promptUser = require("./utils/userPrompt");
-const createFiles = require("./utils/createFiles");
+//Local package
+const promptUser = require("./module/userPrompt");
+const createFiles = require("./module/createFiles");
+const fileMethods = require("./utils/fileMethods");
+const helpers = require("./utils/helpers");
+const startCli = require("./module/startCli");
 
-const cli = meow(
-  `
-	Usage
-	  $ crc <input>
+//Local destructuring
+const { modifyConfigData, errorLog } = helpers;
+const { checkFileExist, readJsonFile, writeJsonFile } = fileMethods;
 
-	Options
-	  -- functional, -f  Create a function component
-      -- class, -c Create a class component
-      -- path, -p path to create components
+const cli = startCli();
 
-	Examples
-	  $ crc -f
-`,
-  {
-    flags: {
-      functional: {
-        type: "boolean",
-        alias: "f",
-      },
-      class: {
-        type: "boolean",
-        alias: "c",
-      },
-      path: {
-        type: "string",
-        alias: "p",
-        default: "",
-      },
-    },
-  }
-);
-// used to log errors to the console in red color
-const errorLog = (error) => {
-  const eLog = chalkPipe("red.underline")(error);
-  throw eLog;
-};
-// const validArguments = ["functional", "f", "class", "c"];
+const { functional, path, class: classFlag } = cli.flags;
+if (cli.input.length === 0 && !(functional && classFlag && !!path)) {
+  errorLog("Atleast one parameter is required");
+}
 try {
   if (cli.input.length > 1) {
     errorLog(`only one argument can be accepted`);
   } else {
-    promptUser().then((data) => createFiles({ data, input: cli.input, flags: cli.flags }));
+    checkFileExist()
+      .then((exist) => {
+        if (exist) {
+          // Read config file
+          return readJsonFile();
+        } else {
+          return promptUser().then(async (data) => {
+            //Modify data ask from user
+            data = modifyConfigData(data);
+            //Create json file in directory
+            await writeJsonFile({ data });
+            return data;
+          });
+        }
+      })
+      .then((data) => {
+        createFiles({ data, input: cli.input, flags: cli.flags });
+      });
   }
 } catch (e) {
   console.log(e);
