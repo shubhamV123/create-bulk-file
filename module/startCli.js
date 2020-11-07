@@ -1,36 +1,26 @@
-const meow = require("meow");
+const meow = require('meow')
 
 const cli = meow(
   `
       Usage
-        $ crc <componentName> <options>
+        $ cf <folder name> <options>
   
       Options
-        -- functional, -f  Create a function component
-      -- class, -c Create a class component
       -- path, -p path to create components
   
       Examples
-        $ crc block -f
+        $ cf block -p=your path (if you want to specify path)
+        $ cf test
   `,
   {
     flags: {
-      functional: {
-        type: "boolean",
-        alias: "f",
-        default: true,
-      },
-      class: {
-        type: "boolean",
-        alias: "c",
-      },
       path: {
-        type: "string",
-        alias: "p",
-        default: "./",
-      },
-    },
+        type: 'string',
+        alias: 'p',
+        default: './'
+      }
+    }
   }
-);
+)
 
-module.exports = cli;
+module.exports = cli

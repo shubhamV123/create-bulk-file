@@ -1,43 +1,51 @@
-const fs = require("fs-extra");
-const path = require("path");
-const chalkPipe = require("chalk-pipe");
+const fs = require('fs-extra')
+const path = require('path')
+const chalkPipe = require('chalk-pipe')
+const logSymbols = require('log-symbols')
 
-const templates = require("../templates");
-const fileMethods = require("../utils/fileMethods");
+const templates = require('../templates/template')
+const fileMethods = require('../utils/fileMethods')
 
-const { checkFileExist } = fileMethods;
+const { checkFileExist } = fileMethods
 
 const createFiles = ({ data, input, flags }) => {
-  const currentWorkingDirectory = path.resolve(process.cwd(), flags.path);
-  const directoryToCreate = `${currentWorkingDirectory}/${input[0]}`;
+  const currentWorkingDirectory = path.resolve(process.cwd(), flags.path)
+  const directoryToCreate = `${currentWorkingDirectory}/${input[0]}`
   checkFileExist(directoryToCreate)
     .then((exist) => {
       if (exist) {
-        throw "Path exist";
+        throw Error('Path exist')
       } else {
-        return fs.ensureDir(directoryToCreate);
+        return fs.ensureDir(directoryToCreate)
       }
     })
-    .then(() => {
-      //   const totalFiles = listOfFiles.length;
-      const filePromise = [];
-      //create files
-      for (let [question, answer] of Object.entries(data)) {
-        // const answers = myComingData[question];
-        filePromise.push(
+    .then(async () => {
+      const filePromiseList = []
+      const isTemplateFileExist = await checkFileExist(
+        `${currentWorkingDirectory}/.crc/template.js`
+      )
+      let finalTemplate = templates
+      if (isTemplateFileExist) {
+        finalTemplate = require(`${currentWorkingDirectory}/.crc/template.js`)
+      }
+      // create files
+      for (const extension of Object.values(data)) {
+        filePromiseList.push(
           fs.outputFile(
-            `${directoryToCreate}/index${answer}`,
-            templates[`${answer.slice(1)}`](input[0])
+            path.join(directoryToCreate, `index${extension}`),
+            finalTemplate[`${extension.slice(1)}`] ? finalTemplate[`${extension.slice(1)}`](input[0]) : ''
           )
-        );
+        )
       }
-      return Promise.all(filePromise);
+
+      return Promise.all(filePromiseList)
     })
+    .then(() => console.log(logSymbols.success, 'Files created successfully'))
     .catch((e) => {
-      console.log(chalkPipe("red.underline")(e));
-      if (e !== "Path exist") {
-        fs.remove(directoryToCreate);
+      console.log(logSymbols.error, chalkPipe('red.underline')(e))
+      if (e.message !== 'Path exist') {
+        fs.remove(directoryToCreate)
       }
-    });
-};
-module.exports = createFiles;
+    })
+}
+module.exports = createFiles
