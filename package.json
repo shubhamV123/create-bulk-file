@@ -16,12 +16,20 @@
     "inquirer": "^7.3.3",
     "meow": "^8.0.0"
   },
+  "homepage": "https://github.com/shubhamV123/create-bulk-files",
+  "bugs": {
+    "url": "https://github.com/shubhamV123/create-bulk-files/blob/master/.github/ISSUE_TEMPLATE/bug_report.md"
+  },
   "scripts": {
     "standard": "./node_modules/.bin/standard"
   },
   "readme": "readme.md",
   "engines": {
     "npm": ">=5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shubhamV123/create-bulk-files.git"
   },
   "keywords": [
     "Create bulk files",
@@ -33,9 +41,10 @@
     "mkdir",
     "scaffold",
     "react",
-    "vue",
-    "svelte",
-    "nodejs",
+    "react folder",
+    "vue folder",
+    "svelte folder",
+    "nodejs folder",
     "component",
     "components",
     "cf",
@@ -51,7 +60,8 @@
     "standard": "^16.0.1"
   },
   "bin": {
-    "cf": "bin/crc.js"
+    "cf": "bin/crc.js",
+    "create-bulk-files": "bin/crc.js"
   },
   "standard": {
     "ignore": [
