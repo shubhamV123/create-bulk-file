@@ -1,6 +1,6 @@
 {
   "name": "create-bulk-file",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A simple command line tool to create bulk files in one go. You can setup with any of your project ",
   "main": "index.js",
   "author": {
