@@ -1,5 +1,5 @@
 {
-  "name": "create-bulk-files",
+  "name": "create-bulk-file",
   "version": "0.0.0",
   "description": "A simple command line tool to create bulk files in one go. You can setup with any of your project ",
   "main": "index.js",
@@ -16,9 +16,9 @@
     "inquirer": "^7.3.3",
     "meow": "^8.0.0"
   },
-  "homepage": "https://github.com/shubhamV123/create-bulk-files",
+  "homepage": "https://github.com/shubhamV123/create-bulk-file",
   "bugs": {
-    "url": "https://github.com/shubhamV123/create-bulk-files/blob/master/.github/ISSUE_TEMPLATE/bug_report.md"
+    "url": "https://github.com/shubhamV123/create-bulk-file/blob/master/.github/ISSUE_TEMPLATE/bug_report.md"
   },
   "scripts": {
     "standard": "./node_modules/.bin/standard"
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shubhamV123/create-bulk-files.git"
+    "url": "https://github.com/shubhamV123/create-bulk-file.git"
   },
   "keywords": [
     "Create bulk files",
@@ -49,7 +49,7 @@
     "components",
     "cf",
     "create-files",
-    "create-bulk-files",
+    "create-bulk-file",
     "create-react-component"
   ],
   "devDependencies": {
@@ -61,7 +61,7 @@
   },
   "bin": {
     "cf": "bin/crc.js",
-    "create-bulk-files": "bin/crc.js"
+    "create-bulk-file": "bin/crc.js"
   },
   "standard": {
     "ignore": [
