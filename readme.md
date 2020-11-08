@@ -14,6 +14,18 @@ If you ever tired of creating folder/files again and again while developing node
 The easiest way to use Create bulk files is to install it globally as a
 Node command line program. Run the following command in Terminal:
 
+Try without installing
+
+```bash
+
+npx create-bulk-file test-folder
+
+or 
+
+npx cf test-folder
+
+```
+
 ```bash
 $ npm install create-bulk-file --global
 

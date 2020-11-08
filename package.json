@@ -2,7 +2,7 @@
   "name": "create-bulk-file",
   "version": "0.1.4",
   "description": "A simple command line tool to create bulk files in one go. You can setup with any of your project ",
-  "main": "index.js",
+  "main": "./index.js",
   "author": {
     "name": "Shubham Verma",
     "email": "shubhamv8527@gmail.com",
@@ -60,8 +60,8 @@
     "standard": "^16.0.1"
   },
   "bin": {
-    "cf": "bin/crc.js",
-    "create-bulk-file": "bin/crc.js"
+    "cf": "./bin/crc.js",
+    "create-bulk-file": "./bin/crc.js"
   },
   "files": [
     "*.js",
