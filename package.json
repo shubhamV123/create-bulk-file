@@ -64,7 +64,11 @@
     "create-bulk-file": "bin/crc.js"
   },
   "files": [
-    "*.js"
+    "*.js",
+    "module/*",
+    "templates/*",
+    "bin/*",
+    "utils/*"
   ],
   "standard": {
     "ignore": [

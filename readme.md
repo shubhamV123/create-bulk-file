@@ -16,15 +16,25 @@ Node command line program. Run the following command in Terminal:
 
 ```bash
 $ npm install create-bulk-file --global
+
+or 
+
+$ yarn global add create-bulk-file
 ```
 
 Or, you can install `create-bulk-file` locally, for use in a single project:
 
 ```bash
 $ npm install create-bulk-file --save-dev
+
+or 
+
+$ yarn add create-bulk-file --dev
 ```
 
-*Note: To run the preceding commands, [Node.js](http://nodejs.org) and [npm](https://npmjs.com) must be installed.*
+**Note:** If you find issue installing this package try with `yarn` or else report bug
+
+*Note: To run the preceding commands, [Node.js](http://nodejs.org) /  [npm](https://npmjs.com) or [yarn](https://yarnpkg.com/) must be installed.*
 
 ## Usage and examples
 
