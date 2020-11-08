@@ -63,6 +63,9 @@
     "cf": "bin/crc.js",
     "create-bulk-file": "bin/crc.js"
   },
+  "files": [
+    "*.js"
+  ],
   "standard": {
     "ignore": [
       "node_modules"
