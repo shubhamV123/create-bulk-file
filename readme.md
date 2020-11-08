@@ -23,8 +23,9 @@ npx create-bulk-file test-folder
 or 
 
 npx cf test-folder
-
 ```
+
+Installing globally
 
 ```bash
 $ npm install create-bulk-file --global
@@ -32,6 +33,14 @@ $ npm install create-bulk-file --global
 or 
 
 $ yarn global add create-bulk-file
+```
+
+then you can use like this:
+
+```bash
+$ cf my-folder
+or
+$ create-bulk-file my-folder
 ```
 
 Or, you can install `create-bulk-file` locally, for use in a single project:
@@ -43,6 +52,31 @@ or
 
 $ yarn add create-bulk-file --dev
 ```
+
+Once you install `create-bulk-file` project level. When you try to run that project. It will give error 
+
+```bash
+command not found: create-bulk-file
+or 
+command not found: cf
+```
+
+Its because it does not know from where to execute. Best is to use via `npx` or `install globally`. If you still want to use locally there are two ways either call via command like this:
+
+```bash
+
+$ ./node_modules/.bin/cf my-new-folder 
+where `my-new-folder` is you folder name
+```
+
+or add in script like this:
+
+```json
+"cf":"cf"
+```
+then you can run like this: `yarn cf folder-name` or `npm run folder-name`
+
+**Note:** `cf` and `create-bulk-files` are aliases you can use anyone which you want
 
 **Note:** If you find issue installing this package try with `yarn` or else report bug
 
@@ -69,8 +103,8 @@ It will generate files like this:
 ├── test
 │   ├── test2
 │       ├── block3
-│       │   ├── **/*.css
-│       │   ├── **/*.js
+│       │   ├── *.css
+│       │   ├── *.js
 ```
 
 (**Note**: Path must be relative to existing project. For example in above example `block3` is created inside test2 folder )
